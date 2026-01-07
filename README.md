@@ -14,12 +14,25 @@ wasm-pack build --target web --out-dir ../playground/pkg
 ## Usage
 
 ```javascript
-import init, { render } from './pkg/pikru_wasm.js';
+import init, { Pikru } from './pkg/pikru_wasm.js';
 
 await init();
 
-const svg = render('box "Hello" arrow box "World"');
+const pikru = new Pikru();
+const svg = pikru.render('box "Hello" arrow box "World"');
 ```
+
+### Options
+
+The `Pikru` constructor accepts an optional options object:
+
+```javascript
+const pikru = new Pikru({ cssVariables: true });
+```
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `cssVariables` | `boolean` | `false` | Use CSS variables for colors, enabling light/dark mode support |
 
 ## Playground
 
