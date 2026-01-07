@@ -26,7 +26,9 @@ jobs:
           cache-dependency-path: node/package-lock.json
 
       - name: Install wasm-bindgen-cli
-        run: cargo install wasm-bindgen-cli --version 0.2.106
+        run: |
+          WASM_BINDGEN_VERSION=$(grep -A 1 'name = "wasm-bindgen"' pikru-wasm/Cargo.lock | grep version | sed 's/.*"\(.*\)".*/\1/')
+          cargo install wasm-bindgen-cli --version $WASM_BINDGEN_VERSION
 
       - name: Install npm dependencies
         working-directory: node
