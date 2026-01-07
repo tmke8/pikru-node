@@ -1,0 +1,27 @@
+{
+  "name": "pikru",
+  "version": "0.1.0",
+  "description": "WASM bindings for pikru - renders Pikchr diagrams to SVG",
+  "type": "module",
+  "main": "dist/pikru_wasm.js",
+  "types": "dist/pikru_wasm.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run build:cargo && npm run build:wasm-bindgen",
+    "build:cargo": "cargo build --release --target wasm32-unknown-unknown --manifest-path ../pikru-wasm/Cargo.toml",
+    "build:wasm-bindgen": "wasm-bindgen ../pikru-wasm/target/wasm32-unknown-unknown/release/pikru_wasm.wasm --out-dir ./dist --target experimental-nodejs-module"
+  },
+  "keywords": [
+    "pikchr",
+    "svg",
+    "diagram",
+    "wasm"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmke8/pikru-node.git"
+  }
+}
