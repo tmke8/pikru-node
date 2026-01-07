@@ -1,0 +1,16 @@
+[package]
+name = "pikru-wasm"
+version = "0.1.0"
+edition = "2021"
+description = "WASM bindings for pikru (pikchr to SVG renderer)"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+pikru = "1.0"
+wasm-bindgen = "0.2"
+
+[profile.release]
+opt-level = "s"
+lto = true

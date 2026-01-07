@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pikru WASM Playground</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            font-family: monospace;
+            font-size: 14px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #output {
+            border: 1px solid #ccc;
+            min-height: 300px;
+            padding: 10px;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #error {
+            color: red;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pikru WASM Playground</h1>
+    <div class="container">
+        <div>
+            <h3>Pikchr Source</h3>
+            <textarea id="source">box "Hello" arrow box "World"</textarea>
+            <button id="render">Render</button>
+            <div id="error"></div>
+        </div>
+        <div>
+            <h3>SVG Output</h3>
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        import init, { render } from './pkg/pikru_wasm.js';
+        import { fixSvgSize } from './pikru-utils.js';
+
+        await init();
+
+        const sourceEl = document.getElementById('source');
+        const outputEl = document.getElementById('output');
+        const errorEl = document.getElementById('error');
+        const renderBtn = document.getElementById('render');
+
+        function doRender() {
+            errorEl.textContent = '';
+            try {
+                const svg = fixSvgSize(render(sourceEl.value));
+                outputEl.innerHTML = svg;
+            } catch (e) {
+                errorEl.textContent = e;
+                outputEl.innerHTML = '';
+            }
+        }
+
+        renderBtn.addEventListener('click', doRender);
+        doRender();
+    </script>
+</body>
+</html>

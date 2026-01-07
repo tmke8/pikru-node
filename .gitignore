@@ -1,0 +1,18 @@
+# Claude Code
+.claude/
+
+# Rust
+target/
+Cargo.lock
+
+# WASM build output
+playground/pkg/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
