@@ -9,6 +9,9 @@ Cargo.lock
 playground/pkg/
 node/dist/
 
+# Node
+node_modules/
+
 # IDE
 .idea/
 .vscode/
