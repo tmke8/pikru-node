@@ -81,7 +81,7 @@
     </div>
 
     <script type="module">
-        import init, { render } from './pkg/pikru_wasm.js';
+        import init, { Pikru } from './pkg/pikru_wasm.js';
         import { fixSvgSize } from './pikru-utils.js';
 
         await init();
@@ -95,8 +95,8 @@
         function doRender() {
             errorEl.textContent = '';
             try {
-                const options = { cssVariables: cssVariablesEl.checked };
-                const svg = fixSvgSize(render(sourceEl.value, options));
+                const pikru = new Pikru({ cssVariables: cssVariablesEl.checked });
+                const svg = fixSvgSize(pikru.render(sourceEl.value));
                 outputEl.innerHTML = svg;
             } catch (e) {
                 errorEl.textContent = e;
