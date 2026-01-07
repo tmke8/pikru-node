@@ -2,21 +2,16 @@
 
 WASM bindings for [pikru](https://crates.io/crates/pikru), a Rust library that renders [Pikchr](https://pikchr.org/) diagrams to SVG.
 
-## Building
-
-Requires [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/).
+## Installation
 
 ```bash
-cd pikru-wasm
-wasm-pack build --target web --out-dir ../playground/pkg
+npm install @tmke8/pikru
 ```
 
 ## Usage
 
 ```javascript
-import init, { Pikru } from './pkg/pikru_wasm.js';
-
-await init();
+import { Pikru } from '@tmke8/pikru';
 
 const pikru = new Pikru();
 const svg = pikru.render('box "Hello" arrow box "World"');
@@ -34,9 +29,35 @@ const pikru = new Pikru({ cssVariables: true });
 |--------|------|---------|-------------|
 | `cssVariables` | `boolean` | `false` | Use CSS variables for colors, enabling light/dark mode support |
 
-## Playground
+## Development
 
-A simple test page is included in the `playground/` directory. To run it:
+### Building
+
+Build the Node.js package:
+
+```bash
+cd node
+npm install
+npm run build
+```
+
+Build for web (requires [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)):
+
+```bash
+cd pikru-wasm
+wasm-pack build --target web --out-dir ../playground/pkg
+```
+
+### Testing
+
+```bash
+cd node
+npm test
+```
+
+### Playground
+
+A simple test page is included in the `playground/` directory:
 
 ```bash
 cd playground

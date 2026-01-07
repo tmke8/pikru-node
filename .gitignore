@@ -10,6 +10,7 @@ node/dist/
 
 # Node
 node_modules/
+node/README.md
 
 # IDE
 .idea/

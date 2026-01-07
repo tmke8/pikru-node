@@ -1,5 +1,5 @@
 {
-  "name": "pikru",
+  "name": "@tmke8/pikru",
   "version": "0.1.0",
   "description": "WASM bindings for pikru - renders Pikchr diagrams to SVG",
   "type": "module",
@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "npm run build:cargo && npm run build:wasm-bindgen",
+    "build": "npm run build:cargo && npm run build:wasm-bindgen && cp ../README.md .",
     "build:cargo": "cargo build --release --target wasm32-unknown-unknown -p pikru-wasm",
     "build:wasm-bindgen": "wasm-bindgen ../target/wasm32-unknown-unknown/release/pikru_wasm.wasm --out-dir ./dist --target experimental-nodejs-module",
     "test": "mocha"
