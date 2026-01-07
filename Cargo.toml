@@ -1,0 +1,3 @@
+[workspace]
+members = ["pikru-wasm"]
+resolver = "2"

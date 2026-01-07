@@ -27,7 +27,7 @@ jobs:
 
       - name: Install wasm-bindgen-cli
         run: |
-          WASM_BINDGEN_VERSION=$(grep -A 1 'name = "wasm-bindgen"' pikru-wasm/Cargo.lock | grep version | sed 's/.*"\(.*\)".*/\1/')
+          WASM_BINDGEN_VERSION=$(grep -A 1 'name = "wasm-bindgen"' Cargo.lock | grep version | sed 's/.*"\(.*\)".*/\1/')
           cargo install wasm-bindgen-cli --version $WASM_BINDGEN_VERSION
 
       - name: Install npm dependencies
