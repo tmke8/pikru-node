@@ -4,6 +4,7 @@ use wasm_bindgen::prelude::*;
 const RENDER_OPTIONS_DEF: &'static str = r#"
 interface RenderOptions {
     cssVariables?: boolean;
+    explicitSize?: boolean;
 }
 "#;
 

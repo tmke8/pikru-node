@@ -1,6 +1,6 @@
 {
   "name": "@tmke8/pikru",
-  "version": "0.1.0",
+  "version": "1.2.1",
   "description": "WASM bindings for pikru - renders Pikchr diagrams to SVG",
   "type": "module",
   "main": "dist/pikru_wasm.js",
