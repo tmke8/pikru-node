@@ -33,6 +33,7 @@ const pikru = new Pikru({ cssVariables: false, explicitSize: false });
 ## Development
 
 ### Building
+Building requires [wasm-bindgen](https://github.com/wasm-bindgen/wasm-bindgen).
 
 Build the Node.js package:
 
@@ -42,11 +43,10 @@ npm install
 npm run build
 ```
 
-Build for web (requires [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)):
+Build for web (requires [wasm-opt](https://github.com/WebAssembly/binaryen) for binary size optimization):
 
 ```bash
-cd pikru-wasm
-wasm-pack build --target web --out-dir ../playground/pkg
+make playground
 ```
 
 ### Testing
@@ -61,8 +61,7 @@ npm test
 A simple test page is included in the `playground/` directory:
 
 ```bash
-cd playground
-python3 -m http.server 8000
+python3 -m http.server 8000 --directory playground
 ```
 
 Then open http://localhost:8000 in your browser.
