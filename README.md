@@ -14,7 +14,7 @@ npm install @tmke8/pikru
 import { Pikru } from '@tmke8/pikru';
 
 const pikru = new Pikru();
-const svg = pikru.render('box "Hello" arrow box "World"');
+const svg = pikru.render('box "Hello"; arrow; box "World"');
 ```
 
 ### Options
@@ -22,12 +22,13 @@ const svg = pikru.render('box "Hello" arrow box "World"');
 The `Pikru` constructor accepts an optional options object:
 
 ```javascript
-const pikru = new Pikru({ cssVariables: true });
+const pikru = new Pikru({ cssVariables: false, explicitSize: false });
 ```
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `cssVariables` | `boolean` | `false` | Use CSS variables for colors, enabling light/dark mode support |
+| Option         | Type      | Default | Description                                                      |
+|----------------|-----------|---------|------------------------------------------------------------------|
+| `cssVariables` | `boolean` | `false` | Use CSS variables for colors, enabling light/dark mode support.  |
+| `explicitSize` | `boolean` | `false` | Add explicit `width` and `height` attributes to the SVG element. |
 
 ## Development
 

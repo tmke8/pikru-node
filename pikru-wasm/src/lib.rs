@@ -14,6 +14,9 @@ extern "C" {
 
     #[wasm_bindgen(method, getter)]
     fn cssVariables(this: &RenderOptions) -> Option<bool>;
+
+    #[wasm_bindgen(method, getter)]
+    fn explicitSize(this: &RenderOptions) -> Option<bool>;
 }
 
 #[wasm_bindgen]
@@ -29,6 +32,10 @@ impl Pikru {
             css_variables: options
                 .as_ref()
                 .and_then(|o| o.cssVariables())
+                .unwrap_or(false),
+            explicit_size: options
+                .as_ref()
+                .and_then(|o| o.explicitSize())
                 .unwrap_or(false),
         };
         Pikru { options }
